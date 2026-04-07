@@ -3,17 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09A6387B2F857989007BFC2B /* BezelNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 09A6387A2F857989007BFC2B /* BezelNotification */; };
 		840300341FB6A90600013359 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840300331FB6A90600013359 /* AppDelegate.swift */; };
 		840300361FB6A90600013359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840300351FB6A90600013359 /* Assets.xcassets */; };
 		840300391FB6A90600013359 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840300371FB6A90600013359 /* MainMenu.xib */; };
 		840300451FB6A90700013359 /* BHBezelNotification_Demo_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840300441FB6A90700013359 /* BHBezelNotification_Demo_AppTests.swift */; };
 		841857651FB7792A006DFA07 /* CustomCursorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841857641FB7792A006DFA07 /* CustomCursorButton.swift */; };
-		B9CA659127A65260001B1943 /* BezelNotification in Frameworks */ = {isa = PBXBuildFile; productRef = B9CA659027A65260001B1943 /* BezelNotification */; };
-		B9CA659327A66158001B1943 /* NSImage Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CA659227A66158001B1943 /* NSImage Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +35,7 @@
 		840300401FB6A90700013359 /* BHBezelNotification Demo AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BHBezelNotification Demo AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		840300441FB6A90700013359 /* BHBezelNotification_Demo_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHBezelNotification_Demo_AppTests.swift; sourceTree = "<group>"; };
 		840300461FB6A90700013359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8418575F1FB77891006DFA07 /* BHBezelNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BHBezelNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		841857641FB7792A006DFA07 /* CustomCursorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCursorButton.swift; sourceTree = "<group>"; };
-		B9CA659227A66158001B1943 /* NSImage Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSImage Extensions.swift"; path = "../../Sources/BezelNotification/Extensions/NSImage Extensions.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9CA659127A65260001B1943 /* BezelNotification in Frameworks */,
+				09A6387B2F857989007BFC2B /* BezelNotification in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +81,6 @@
 			children = (
 				840300331FB6A90600013359 /* AppDelegate.swift */,
 				841857641FB7792A006DFA07 /* CustomCursorButton.swift */,
-				B9CA659227A66158001B1943 /* NSImage Extensions.swift */,
 				840300351FB6A90600013359 /* Assets.xcassets */,
 				840300371FB6A90600013359 /* MainMenu.xib */,
 				8403003A1FB6A90600013359 /* Info.plist */,
@@ -105,7 +101,6 @@
 		8418575D1FB77891006DFA07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8418575F1FB77891006DFA07 /* BHBezelNotification.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -127,7 +122,7 @@
 			);
 			name = "BHBezelNotification Demo App";
 			packageProductDependencies = (
-				B9CA659027A65260001B1943 /* BezelNotification */,
+				09A6387A2F857989007BFC2B /* BezelNotification */,
 			);
 			productName = "BHBezelNotification Demo App";
 			productReference = 840300301FB6A90600013359 /* BHBezelNotification Demo App.app */;
@@ -183,6 +178,9 @@
 				Base,
 			);
 			mainGroup = 840300271FB6A90600013359;
+			packageReferences = (
+				09A638792F857989007BFC2B /* XCRemoteSwiftPackageReference "BezelNotification" */,
+			);
 			productRefGroup = 840300311FB6A90600013359 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -217,7 +215,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9CA659327A66158001B1943 /* NSImage Extensions.swift in Sources */,
 				841857651FB7792A006DFA07 /* CustomCursorButton.swift in Sources */,
 				840300341FB6A90600013359 /* AppDelegate.swift in Sources */,
 			);
@@ -480,9 +477,21 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		09A638792F857989007BFC2B /* XCRemoteSwiftPackageReference "BezelNotification" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BlueHuskyStudios/BezelNotification.git";
+			requirement = {
+				branch = "feature/1-no-such-module-BHBezelNotification";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		B9CA659027A65260001B1943 /* BezelNotification */ = {
+		09A6387A2F857989007BFC2B /* BezelNotification */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 09A638792F857989007BFC2B /* XCRemoteSwiftPackageReference "BezelNotification" */;
 			productName = BezelNotification;
 		};
 /* End XCSwiftPackageProductDependency section */
