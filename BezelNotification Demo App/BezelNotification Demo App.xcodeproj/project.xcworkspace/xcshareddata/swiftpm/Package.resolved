@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BlueHuskyStudios/BezelNotification.git",
       "state" : {
-        "branch" : "feature/6-SwiftUI",
-        "revision" : "d4601d55c6e103f6a1d27ee9dc8f9465412d3dd3"
+        "revision" : "b28973e7a14438ed00c18eb08f9c630ec6dc6330",
+        "version" : "3.0.0-alpha.1"
       }
     },
     {

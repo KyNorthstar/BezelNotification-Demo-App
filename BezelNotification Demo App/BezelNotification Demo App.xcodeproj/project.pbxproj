@@ -11,6 +11,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		091DB4DC2F8767E90027FBE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
 		09D6F3DA2F8583F3006EBFD0 /* BezelNotification Demo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BezelNotification Demo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -37,6 +38,7 @@
 		09D6F3D12F8583F3006EBFD0 = {
 			isa = PBXGroup;
 			children = (
+				091DB4DC2F8767E90027FBE1 /* README.md */,
 				09D6F3DC2F8583F3006EBFD0 /* BezelNotification Demo App */,
 				09D8A3332F86B36700AFE354 /* Frameworks */,
 				09D6F3DB2F8583F3006EBFD0 /* Products */,
@@ -354,8 +356,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BlueHuskyStudios/BezelNotification.git";
 			requirement = {
-				branch = "feature/6-SwiftUI";
-				kind = branch;
+				kind = exactVersion;
+				version = "3.0.0-alpha.1";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
