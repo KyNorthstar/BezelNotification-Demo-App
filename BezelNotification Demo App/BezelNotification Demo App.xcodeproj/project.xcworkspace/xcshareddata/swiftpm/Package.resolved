@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BlueHuskyStudios/BezelNotification.git",
       "state" : {
-        "revision" : "b28973e7a14438ed00c18eb08f9c630ec6dc6330",
-        "version" : "3.0.0-alpha.1"
+        "revision" : "0e66c6c471a06f2e2744dd95455b4ce0235d6084",
+        "version" : "3.0.0-alpha.10"
       }
     },
     {
@@ -34,7 +34,7 @@
       "location" : "https://github.com/RougeWare/Swift-MultiplicativeArithmetic.git",
       "state" : {
         "revision" : "c45199953ac680dfdcaefff5f8743f1126fe8a4e",
-        "version" : "1.4.1"
+        "version" : "2.0.1"
       }
     },
     {
@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RougeWare/Swift-Rectangle-Tools.git",
       "state" : {
-        "revision" : "1942e19c4f84c32fa4aca3e7aa68c724f264452f",
-        "version" : "2.17.0"
+        "revision" : "dd8eba41360e39c74159d7a1ef9496efc6fefc40",
+        "version" : "2.17.1"
       }
     }
   ],
