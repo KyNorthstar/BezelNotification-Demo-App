@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BlueHuskyStudios/BezelNotification.git",
       "state" : {
-        "revision" : "0e66c6c471a06f2e2744dd95455b4ce0235d6084",
-        "version" : "3.0.0-alpha.10"
+        "revision" : "04e8b0dd8c322f77efb8b3b4bbb80678bde7da01",
+        "version" : "3.0.0-alpha.11"
       }
     },
     {

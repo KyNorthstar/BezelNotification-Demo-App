@@ -357,7 +357,7 @@
 			repositoryURL = "https://github.com/BlueHuskyStudios/BezelNotification.git";
 			requirement = {
 				kind = exactVersion;
-				version = "3.0.0-alpha.10";
+				version = "3.0.0-alpha.11";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

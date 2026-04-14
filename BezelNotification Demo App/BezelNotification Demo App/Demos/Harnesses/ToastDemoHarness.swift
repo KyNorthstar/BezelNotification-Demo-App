@@ -114,6 +114,8 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
                 .glassEffect(in: RoundedRectangle(cornerRadius: 12))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            
                 .toast(
                     isPresented: $showToast,
                     text: (try? .init(markdown: text)) ?? .init(text),
@@ -121,6 +123,8 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
                     icon: nil,
                     action: useCallToAction ? .init(label: callToActionString, userDidInteract: null) : nil)
                 .toastStyle(style)
+            
+            
         }
         additionalBottomBarControls: {
             Button("Hide") {
@@ -132,6 +136,7 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
             showToast = true
         }
         .animation(.bouncy, value: useCallToAction)
+//        .environment(\.debugOverlay, true)
     }
 }
 

@@ -22,8 +22,12 @@ struct ContentView: View {
 //                BezelDemo()
 //            }
             
-            Tab("Snackbar", systemImage: "exclamationmark.bubble") {
+            Tab("Snackbar", systemImage: "inset.filled.bottomleading.rectangle") {
                 SnackbarToastDemo()
+            }
+            
+            Tab("Capsule", systemImage: "capsule") {
+                CapsuleToastDemo()
             }
         }
         .tabViewStyle(.tabBarOnly)
