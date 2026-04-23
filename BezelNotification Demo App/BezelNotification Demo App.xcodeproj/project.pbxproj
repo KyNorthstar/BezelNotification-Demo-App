@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09D8A3352F86B36700AFE354 /* BlueToast in Frameworks */ = {isa = PBXBuildFile; productRef = 09D8A3342F86B36700AFE354 /* BlueToast */; };
+		091A0A0E2F9A958000304FB8 /* Howl in Frameworks */ = {isa = PBXBuildFile; productRef = 091A0A0D2F9A958000304FB8 /* Howl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09D8A3352F86B36700AFE354 /* BlueToast in Frameworks */,
+				091A0A0E2F9A958000304FB8 /* Howl in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,7 @@
 			);
 			name = "BezelNotification Demo App";
 			packageProductDependencies = (
-				09D8A3342F86B36700AFE354 /* BlueToast */,
+				091A0A0D2F9A958000304FB8 /* Howl */,
 			);
 			productName = "BezelNotification Demo App";
 			productReference = 09D6F3DA2F8583F3006EBFD0 /* BezelNotification Demo App.app */;
@@ -271,7 +271,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2026.04.23;
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -283,8 +283,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.bhstudios.BezelNotification-Demo-App";
+				MARKETING_VERSION = 3.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bhstudios.Howl-Demo-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -303,7 +303,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2026.04.23;
 				DEVELOPMENT_TEAM = 26V9MK8TGP;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -315,8 +315,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.bhstudios.BezelNotification-Demo-App";
+				MARKETING_VERSION = 3.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.bhstudios.Howl-Demo-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -356,17 +356,17 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BlueHuskyStudios/BezelNotification.git";
 			requirement = {
-				kind = exactVersion;
-				version = "3.0.0-alpha.11";
+				kind = revision;
+				revision = 38dfe0f42329b3483a566a688b573cc12775c359;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		09D8A3342F86B36700AFE354 /* BlueToast */ = {
+		091A0A0D2F9A958000304FB8 /* Howl */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 09D6F3E82F85844E006EBFD0 /* XCRemoteSwiftPackageReference "BezelNotification" */;
-			productName = BlueToast;
+			productName = Howl;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

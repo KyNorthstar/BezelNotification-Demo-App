@@ -1,6 +1,6 @@
 //
 //  SystemBezelDemo.swift
-//  BezelNotification Demo App
+//  Howl Demo App
 //
 //  Created by Ky on 2026-04-07.
 //

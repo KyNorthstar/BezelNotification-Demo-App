@@ -1,13 +1,13 @@
 //
 //  ToastDemoHarness.swift
-//  BezelNotification Demo App
+//  Howl Demo App
 //
 //  Created by Ky on 2026-04-09.
 //
 
 import SwiftUI
 
-@testable import BlueToast
+@testable import Howl
 import FunctionTools
 
 
@@ -65,17 +65,9 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
                             switch duration {
                             case .actionFeedback,
                                     .importantText:
-                                let secondsText = duration.inSeconds
-                                    .formatted(.number
-                                        .rounded(increment: 0.1)
-                                        .precision(.integerAndFractionLength(
-                                            integerLimits: 1...,
-                                            fractionLimits: 0...2))
-                                    )
+                                Text("This toast will show for \(configuration.secondsText) seconds.")
                                 
-                                Text("This toast will show for \(secondsText) seconds.")
-                                
-                            case .criticalAlert:
+                            case .manualDismiss:
                                 Text("This toast will show until dismissed.")
                             }
                         }
@@ -118,10 +110,7 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
             
                 .toast(
                     isPresented: $showToast,
-                    text: (try? .init(markdown: text)) ?? .init(text),
-                    duration: duration,
-                    icon: nil,
-                    action: useCallToAction ? .init(label: callToActionString, userDidInteract: null) : nil)
+                    configuration: configuration)
                 .toastStyle(style)
             
             
@@ -138,6 +127,21 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
         .animation(.bouncy, value: useCallToAction)
 //        .environment(\.debugOverlay, true)
     }
+    
+    
+    private var configuration: ToastConfiguration {
+        ToastConfiguration(
+            text: (try? .init(markdown: text)) ?? .init(text),
+            duration: duration,
+            icon: icon,
+            callToAction: useCallToAction ? callToAction : nil
+        )
+    }
+    
+    
+    private var callToAction: ToastConfiguration.CallToAction? {
+        .init(label: callToActionString, userDidInteract: null)
+    }
 }
 
 
@@ -145,5 +149,25 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
 extension ToastConfiguration.Duration: @retroactive Identifiable {
     public var id: Int {
         hashValue
+    }
+}
+
+
+
+extension ToastConfiguration {
+    func durationInSecondsIfAppearingNow() -> TimeInterval {
+        let now = Date.now
+        return disappearDate(appearingAt: now).timeIntervalSince(now)
+    }
+    
+    
+    var secondsText: String {
+        durationInSecondsIfAppearingNow()
+            .formatted(.number
+                .rounded(increment: 0.1)
+                .precision(.integerAndFractionLength(
+                    integerLimits: 1...,
+                    fractionLimits: 0...2))
+            )
     }
 }

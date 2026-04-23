@@ -1,6 +1,6 @@
 //
 //  SystemBezelDemo.swift
-//  BezelNotification Demo App
+//  Howl Demo App
 //
 //  Created by Ky on 2026-04-07.
 //
@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-@testable import BlueToast
+@testable import Howl
 import CrossKitTypes
 import FunctionTools
 import RectangleTools
@@ -96,7 +96,10 @@ private extension SystemBezelDemo {
         previewBezel {
             VStack {
                 let bezelSize = draftParameters.size.cgSize
-                let imageWellSize = (CGSize.square(999)).scaled(within: bezelSize * 0.6, method: .fit, direction: .upOrDown)
+                let imageWellSize = CGSize(square: 999)
+                    .scaled(within: bezelSize * 0.6,
+                            method: .fit,
+                            direction: .upOrDown)
                 
                 Spacer()
                 
@@ -157,22 +160,22 @@ private extension SystemBezelDemo {
     var unLaidOutParameters: some View {
         Picker("Timeout", selection: $draftParameters.timeToLive) {
             Text("Short")
-                .tag(SystemBezelNotification.TimeToLive.short)
+                .tag(BezelNotificationParameters.TimeToLive.short)
             
             Text("Long")
-                .tag(SystemBezelNotification.TimeToLive.long)
+                .tag(BezelNotificationParameters.TimeToLive.long)
             
             Text("Forever")
-                .tag(SystemBezelNotification.TimeToLive.forever)
+                .tag(BezelNotificationParameters.TimeToLive.forever)
         }
         .buttonBorderShape(.capsule)
         
         ColorPicker(
             "Tint",
             selection: Binding {
-                Color(draftParameters.backgroundTint)
+                Color(draftParameters.rawBackgroundTint)
             } set: { newValue in
-                draftParameters.backgroundTint = .init(newValue)
+                draftParameters.rawBackgroundTint = .init(newValue)
             },
             supportsOpacity: true,
         )

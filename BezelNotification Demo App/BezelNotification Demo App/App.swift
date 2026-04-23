@@ -1,6 +1,6 @@
 //
 //  App.swift
-//  BezelNotification Demo App
+//  Howl Demo App
 //
 //  Created by Ky on 2026-04-07.
 //
@@ -12,7 +12,7 @@ struct App: SwiftUI.App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .navigationTitle("BlueToast demo app")
+                .navigationTitle("Howl demo app")
         }
     }
 }

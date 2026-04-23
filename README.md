@@ -1,8 +1,8 @@
-## BlueToast `SystemBezelNotification` Demo App
+## Howl Demo App
 
-This mini app simply demonstrates the behavior and basic capabilities of the `SystemBezelNotification` from [`BlueToast`](https://github.com/BlueHuskyStudios/BezelNotification)
+This mini app simply demonstrates the behavior and basic capabilities of [`Howl`](https://github.com/BlueHuskyStudios/BezelNotification)
 
-![](./macOS & BezelNotification comparison.png)
+![](./macOS & SystemBezelNotification comparison.png)
 
 
 ![](./Screenshot.png)
