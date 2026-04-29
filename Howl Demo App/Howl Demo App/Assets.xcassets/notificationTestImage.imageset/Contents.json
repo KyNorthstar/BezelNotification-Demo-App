@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "paw_2.2.1.png",
+      "filename" : "notificationTestImage (plus).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "paw_2.2.1@2x.png",
+      "filename" : "notificationTestImage (plus)@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : " Paw 2.2.2.png",
+      "filename" : "notificationTestImage (plus)@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
@@ -21,6 +21,6 @@
     "version" : 1
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "original"
   }
 }

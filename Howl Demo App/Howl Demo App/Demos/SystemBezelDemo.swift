@@ -23,6 +23,9 @@ private let previewBezelSize = CGSize(square: 222)
 #if os(macOS)
 struct SystemBezelDemo: View {
     
+    @Environment(\.colorScheme)
+    private var colorScheme
+    
     @State
     private var draftParameters = SystemBezelNotification.Parameters(messageText: "Hello, bezel!")
     
@@ -145,7 +148,7 @@ private extension SystemBezelDemo {
                             content()
                         }
                         .compositingGroup()
-                        .blendMode(.plusLighter)
+                        .blendMode(bestForegroundBlendMode(in: colorScheme))
                     }
                     .clipShape(RoundedRectangle(cornerRadius: SystemBezelNotification.Parameters.defaultCornerRadius))
                 
@@ -199,6 +202,15 @@ private extension SystemBezelDemo {
             SystemBezelNotification.show(with: parameters)
                 .sink(receiveValue: null)
                 .store(in: &publishers)
+    }
+    
+    
+    private func bestForegroundBlendMode(in colorScheme: ColorScheme) -> BlendMode {
+        switch colorScheme {
+        case .dark: .plusLighter
+        case .light: .plusDarker
+        @unknown default: .normal
+        }
     }
 }
 
