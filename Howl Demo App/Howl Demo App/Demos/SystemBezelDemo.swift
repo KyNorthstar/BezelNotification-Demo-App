@@ -37,7 +37,7 @@ struct SystemBezelDemo: View {
     
     
     var body: some View {
-        DemoHarness {
+        DemoHarness(allowedBackgrounds: [.image]) {
             ZStack {
                 preview
                 

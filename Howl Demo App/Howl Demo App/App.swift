@@ -13,8 +13,14 @@ import SwiftUI
 struct App: SwiftUI.App {
     var body: some Scene {
         WindowGroup {
+//            ForScreenshots()
             ContentView()
                 .navigationTitle("Howl demo app")
         }
+#if os(macOS)
+        .windowToolbarLabelStyle(fixed: .titleAndIcon)
+#endif
     }
 }
+
+

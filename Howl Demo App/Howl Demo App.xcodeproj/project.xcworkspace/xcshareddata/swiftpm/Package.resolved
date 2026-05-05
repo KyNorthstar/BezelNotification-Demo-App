@@ -1,13 +1,21 @@
 {
-  "originHash" : "457cc403667f3c343150cf983148e291c374dc1819716cf65ac922cb034f5bad",
+  "originHash" : "41eb835dd2b205bd6aec95a5b7ccbf7d25d99a9ab3da89bec832a9e1c93999e9",
   "pins" : [
     {
       "identity" : "bezelnotification",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/BlueHuskyStudios/BezelNotification.git",
       "state" : {
-        "revision" : "f991d17d12558c3036502b4cc790592bb4ee684e",
-        "version" : "3.0.0-beta.3"
+        "revision" : "7208409c76c9576e4bc247b2101f55f262ef9d1d"
+      }
+    },
+    {
+      "identity" : "swift-collection-tools",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RougeWare/Swift-Collection-Tools.git",
+      "state" : {
+        "revision" : "84330a040a57296eb6a4d0c801294689dab80166",
+        "version" : "3.2.1"
       }
     },
     {

@@ -35,6 +35,11 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
     @State
     private var callToActionString = "Say hi"
     
+    
+    @State
+    private var showConfiguration = true
+    
+    
     private let style: Style
     private let supportedFeatures: Set<SupportedFeature>
     private let extraConfiguration: (() -> ExtraConfiguration)?
@@ -67,6 +72,13 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
                 .toastStyle(style)
             
             
+            
+            
+                .toolbar {
+                    ToolbarItem(placement: .secondaryAction) {
+                        Toggle("Show config", systemImage: "slider.horizontal.2.square", isOn: $showConfiguration)
+                    }
+                }
         }
         additionalPrimaryControls: {
             Button("Hide") {
@@ -86,7 +98,9 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
     var positionedForm: some View {
 #if os(macOS)
             ZStack {
-                form
+                if showConfiguration {
+                    form
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
 #elseif os(iOS)
@@ -94,10 +108,12 @@ struct ToastDemoHarness<Style: ToastStyle, ExtraConfiguration: View>: View {
             Rectangle()
                 .fill(.clear)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-            form
-                .scrollDisabled(true)
-                .formStyle(.grouped)
-                .padding(.horizontal)
+            if showConfiguration {
+                form
+                    .scrollDisabled(true)
+                    .formStyle(.grouped)
+                    .padding(.horizontal)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
 #endif

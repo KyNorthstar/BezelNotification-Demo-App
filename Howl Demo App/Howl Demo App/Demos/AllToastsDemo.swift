@@ -18,14 +18,16 @@ struct AllToastsDemo: View {
 #if os(macOS)
         identifiedToastView(for: selectedToast)
             .toolbar(id: "Toasts") {
-                ToolbarItem(id: "Selected toast") {
+                ToolbarItem(id: "Selected toast", placement: .secondaryAction) {
                     Picker("Selected toast", selection: $selectedToast) {
                         ForEach(DemoableToast.allCases) {
-                            Text($0.rawValue.capitalized)
+                            Label($0.localizedTitle,
+                                  systemImage: $0.systemImage)
                                 .tag($0)
+                                .labelStyle(.titleAndIcon)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    .pickerStyle(.menu)
                 }
             }
 #elseif os(iOS)

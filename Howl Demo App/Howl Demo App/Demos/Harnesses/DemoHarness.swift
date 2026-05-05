@@ -8,13 +8,14 @@
 import Combine
 import SwiftUI
 
+import CollectionTools
 import CrossKitTypes
 import FunctionTools
 import RectangleTools
 
 
 
-private let copyrightLinkUrl = URL(string: "https://KyLeggiero.me")!
+private let copyrightLinkUrl = URL(string: "https://github.com/BlueHuskyStudios/BezelNotification")!
 
 
 
@@ -23,15 +24,30 @@ struct DemoHarness<Content: View, AdditionalPrimaryControls: View>: View {
     @Environment(\.openURL)
     private var openUrl
     
+    @Environment(\.horizontalSizeClass)
+    private var horizontalSizeClass
+    
+    private let allowedBackgrounds: [PreviewBackground]
     private var content: () -> Content
     private var additionalPrimaryControls: () -> AdditionalPrimaryControls
     private var didPressShow: () -> Void
     
+    @State
+    private var background: PreviewBackground = .image
     
-    init(@ViewBuilder content: @escaping () -> Content,
+    @State
+    private var showContent = true
+    
+    
+    init(allowedBackgrounds: Set<PreviewBackground>? = nil,
+         @ViewBuilder content: @escaping () -> Content,
          @ViewBuilder additionalPrimaryControls: @escaping () -> AdditionalPrimaryControls,
          didPressShow: @escaping () -> Void)
     {
+        self.allowedBackgrounds = allowedBackgrounds?.nonEmptyOrNil.map { Array($0) } ?? PreviewBackground.allCases
+        self.background = self.allowedBackgrounds.contains(.image)
+            ? .image
+            : (self.allowedBackgrounds.first ?? .image)
         self.content = content
         self.additionalPrimaryControls = additionalPrimaryControls
         self.didPressShow = didPressShow
@@ -50,7 +66,6 @@ struct DemoHarness<Content: View, AdditionalPrimaryControls: View>: View {
     
     var body: some View {
         controls
-        
     }
     
     
@@ -58,40 +73,74 @@ struct DemoHarness<Content: View, AdditionalPrimaryControls: View>: View {
 #if os(macOS)
         VStack {
             Spacer()
-            content()
+            if showContent {
+                content()
+            }
             Spacer()
             
             bottomBar
         }
-        .previewBackground()
+        .previewBackground(background)
+        
+        .toolbar {
+            if allowedBackgrounds.count > 1 {
+                ToolbarItem(placement: .secondaryAction) {
+                    Picker("Background", selection: $background) {
+                        ForEach(allowedBackgrounds) { background in
+                            Label(background.localizedDescription,
+                                  systemImage: background.systemImage)
+                                .id(background)
+                                .tag(background)
+                        }
+                    }
+                    .pickerStyle(.inline)
+                }
+            }
+        }
 #else
         NavigationStack {
             ZStack {
                 Rectangle().fill(.clear)
                 
-                content()
-                    .toolbar {
-                        ToolbarItem(placement: .title) {
-                            creatorLink
+                if showContent {
+                    content()
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .title) {
+                    creatorLink
 //                                .padding(EdgeInsets(eachVertical: 2, eachHorizontal: 4))
 //                                .background {
 //                                    RoundedRectangle(cornerRadius: 12)
 //                                        .fill(.thinMaterial)
 //                                }
-                        }
-                        
-                        ToolbarItem(placement: .confirmationAction) {
-                            additionalPrimaryControls()
-                        }
-                        ToolbarItem(placement: .confirmationAction) {
-                            showButton
+                }
+                
+                if allowedBackgrounds.count > 1 {
+                    ToolbarItem(placement: .secondaryAction) {
+                        Picker("Background", selection: $background) {
+                            ForEach(allowedBackgrounds) { background in
+                                Label(background.localizedDescription,
+                                      systemImage: background.systemImage)
+                                    .id(background)
+                                    .tag(background)
+                            }
                         }
                     }
-                    .toolbarBackground(Material.thinMaterial)
-                    .toolbarBackgroundVisibility(.visible)
-                    .toolbarTitleDisplayMode(.inlineLarge)
+                    .sharedBackgroundVisibility(.hidden)
+                }
+                
+                ToolbarItem(placement: .primaryAction) {
+                    additionalPrimaryControls()
+                }
+                ToolbarItem(placement: .primaryAction) {
+                    showButton
+                }
             }
-            .previewBackground()
+            .toolbarBackground(Material.thinMaterial)
+            .toolbarBackgroundVisibility(.visible)
+            .toolbarTitleDisplayMode(.inlineLarge)
+            .previewBackground(background)
         }
 #endif
     }
@@ -124,13 +173,27 @@ private extension DemoHarness {
             openUrl(copyrightLinkUrl)
         }
         label: {
-            VStack(alignment: .leading, spacing: -2) {
-                Text("Howl")
-                    .font(.title)
-                Text("Toasts for SwiftUI")
-                    .font(.subheadline)
+            HStack {
+                Image(.logoMonochrome)
+                
+                switch horizontalSizeClass {
+                case .regular:
+                    VStack(alignment: .leading, spacing: -2) {
+                        Text("Howl")
+                            .font(.title)
+                        Text("Toasts for SwiftUI")
+                            .font(.subheadline)
+                    }
+                    .padding(.bottom, 2)
+                    
+                case .compact,
+                        .none:
+                    Spacer()
+                    
+                @unknown default:
+                    Spacer()
+                }
             }
-            .padding(.bottom, 2)
         }
 #if os(macOS)
         .buttonStyle(.borderless)
@@ -148,13 +211,41 @@ private extension DemoHarness {
 
 
 
+enum PreviewBackground: CaseIterable, Identifiable, Hashable {
+    case image
+    case fakeApp
+    
+    var id: Self { self }
+    
+    var localizedDescription: LocalizedStringKey {
+        switch self {
+        case .image:   "Photo"
+        case .fakeApp: "Fake app"
+        }
+    }
+    
+    
+    var systemImage: String {
+        switch self {
+        case .image:   "photo"
+        case .fakeApp: "app.dashed"
+        }
+    }
+}
+
+
+
 private extension View {
-    func previewBackground() -> some View {
+    func previewBackground(_ previewBackground: PreviewBackground) -> some View {
         self
             .background {
-                backgroundImage
+                switch previewBackground {
+                case .image:
+                    backgroundImage
+                case .fakeApp:
+                    FakeApp()
+                }
             }
-//            .background(Image(.previewBackground))
             .background(ignoresSafeAreaEdges: .all)
     }
     
@@ -178,7 +269,7 @@ private extension View {
         }
     }
     additionalPrimaryControls: {
-        Button("Howl") {}
+        Button("Other control", systemImage: "character.book.closed.ko", action: null)
     }
     didPressShow: {}
 }
